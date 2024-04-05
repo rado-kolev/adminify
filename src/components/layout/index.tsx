@@ -1,7 +1,16 @@
+import { ThemedLayoutV2, ThemedTitleV2 } from '@refinedev/antd'
 import React from 'react'
+import Header from './header'
 
-export const Layout = () => {
+const Layout = ({children}: React.PropsWithChildren) => {
   return (
-    <div>Layout</div>
+    <ThemedLayoutV2
+      Header={Header}
+      Title={(titleProps) => <ThemedTitleV2 {...titleProps} text='Adminify' />}
+    >
+      {children}
+    </ThemedLayoutV2>
   )
 }
+
+export default Layout
