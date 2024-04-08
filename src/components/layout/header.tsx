@@ -2,7 +2,6 @@ import { Layout, Space } from 'antd';
 import CurrentUser from './curent-user';
 
 const Header = () => {
-
   const headerStyles: React.CSSProperties = {
     background: '#fff',
     padding: '0 24px',
@@ -12,7 +11,7 @@ const Header = () => {
     position: 'sticky',
     top: 0,
     zIndex: 999,
-  }
+  };
   return (
     <Layout.Header style={headerStyles}>
       <Space align='center' size='middle'>

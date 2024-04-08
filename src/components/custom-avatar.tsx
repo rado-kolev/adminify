@@ -3,9 +3,9 @@ import { Avatar as AntdAvatar, AvatarProps } from 'antd';
 
 type Props = AvatarProps & {
   name?: string;
-}
+};
 
-const CustomAvatar = ({name, style, ...rest}: Props) => {
+const CustomAvatar = ({ name, style, ...rest }: Props) => {
   return (
     <AntdAvatar
       alt={name}
@@ -15,13 +15,13 @@ const CustomAvatar = ({name, style, ...rest}: Props) => {
         display: 'flex',
         alignItems: 'center',
         border: 'none',
-        ...style
+        ...style,
       }}
       {...rest}
     >
       {getNameInitials(name || '')}
     </AntdAvatar>
-  )
-}
+  );
+};
 
-export default CustomAvatar
+export default CustomAvatar;

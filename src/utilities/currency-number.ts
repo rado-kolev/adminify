@@ -1,15 +1,15 @@
 export const currencyNumber = (
   value: number,
-  options?: Intl.NumberFormatOptions,
+  options?: Intl.NumberFormatOptions
 ) => {
   if (
-    typeof Intl == "object" &&
+    typeof Intl == 'object' &&
     Intl &&
-    typeof Intl.NumberFormat == "function"
+    typeof Intl.NumberFormat == 'function'
   ) {
-    return new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
       ...options,
     }).format(value);
   }

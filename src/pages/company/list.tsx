@@ -1,17 +1,31 @@
 import CustomAvatar from '@/components/custom-avatar';
 import { Text } from '@/components/text';
 import { COMPANIES_LIST_QUERY } from '@/graphql/queries';
-import { Company } from '@/graphql/schema.types';
+import { CompaniesListQuery } from '@/graphql/types';
 import { currencyNumber } from '@/utilities';
 import { SearchOutlined } from '@ant-design/icons';
-import { CreateButton, DeleteButton, EditButton, FilterDropdown, List, useTable } from '@refinedev/antd';
-import { getDefaultFilter, useGo } from '@refinedev/core';
+import {
+  CreateButton,
+  DeleteButton,
+  EditButton,
+  FilterDropdown,
+  List,
+  useTable,
+} from '@refinedev/antd';
+import { HttpError, getDefaultFilter, useGo } from '@refinedev/core';
+import { GetFieldsFromList } from '@refinedev/nestjs-query';
 import { Input, Space, Table } from 'antd';
 
-export const CompanyList = ({children}: React.PropsWithChildren) => {
+type Company = GetFieldsFromList<CompaniesListQuery>;
+
+export const CompanyList = ({ children }: React.PropsWithChildren) => {
   const go = useGo();
 
-  const { tableProps, filters } = useTable({
+  const { tableProps, filters } = useTable<
+    GetFieldsFromList<CompaniesListQuery>,
+    HttpError,
+    GetFieldsFromList<CompaniesListQuery>
+  >({
     resource: 'companies',
     onSearch: (values) => {
       return [
@@ -19,8 +33,8 @@ export const CompanyList = ({children}: React.PropsWithChildren) => {
           field: 'name',
           operator: 'contains',
           value: values.name,
-        }
-      ]
+        },
+      ];
     },
     pagination: {
       pageSize: 12,
@@ -31,7 +45,7 @@ export const CompanyList = ({children}: React.PropsWithChildren) => {
           field: 'createdAt',
           order: 'desc',
         },
-      ]
+      ],
     },
     filters: {
       initial: [
@@ -40,7 +54,7 @@ export const CompanyList = ({children}: React.PropsWithChildren) => {
           operator: 'contains',
           value: undefined,
         },
-      ]
+      ],
     },
     meta: {
       gqlQuery: COMPANIES_LIST_QUERY,
@@ -84,7 +98,7 @@ export const CompanyList = ({children}: React.PropsWithChildren) => {
                 <Input placeholder='Search Company' />
               </FilterDropdown>
             )}
-            render={(value, record) => (
+            render={(_, record) => (
               <Space>
                 <CustomAvatar
                   shape='square'
@@ -99,7 +113,7 @@ export const CompanyList = ({children}: React.PropsWithChildren) => {
           <Table.Column<Company>
             dataIndex='totalRevenue'
             title='Open deals amount'
-            render={(value, company) => (
+            render={(_, company) => (
               <Text>
                 {currencyNumber(company?.dealsAggregate?.[0].sum?.value || 0)}
               </Text>

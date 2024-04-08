@@ -1,4 +1,8 @@
-import { DashboardOutlined, ProjectOutlined, ShopOutlined } from '@ant-design/icons';
+import {
+  DashboardOutlined,
+  ProjectOutlined,
+  ShopOutlined,
+} from '@ant-design/icons';
 import { IResourceItem } from '@refinedev/core';
 
 export const resources: IResourceItem[] = [
@@ -7,8 +11,8 @@ export const resources: IResourceItem[] = [
     list: '/',
     meta: {
       label: 'Dashboard',
-      icon: <DashboardOutlined />
-    }
+      icon: <DashboardOutlined />,
+    },
   },
   {
     name: 'companies',
@@ -18,8 +22,8 @@ export const resources: IResourceItem[] = [
     edit: '/companies/edit/:id',
     meta: {
       label: 'Companies',
-      icon: <ShopOutlined />
-    }
+      icon: <ShopOutlined />,
+    },
   },
   {
     name: 'tasks',
@@ -28,7 +32,7 @@ export const resources: IResourceItem[] = [
     edit: '/tasks/edit/:id',
     meta: {
       label: 'Tasks',
-      icon: <ProjectOutlined />
-    }
+      icon: <ProjectOutlined />,
+    },
   },
-]
+];

@@ -19,10 +19,7 @@ const CurrentUser = () => {
         flexDirection: 'column',
       }}
     >
-      <Text
-        strong
-        style={{padding: '12px 20px'}}
-      >
+      <Text strong style={{ padding: '12px 20px' }}>
         {user?.name}
       </Text>
       <div
@@ -31,7 +28,7 @@ const CurrentUser = () => {
           padding: '4px',
           display: 'flex',
           flexDirection: 'column',
-          gap: '4px'
+          gap: '4px',
         }}
       >
         <Button
@@ -64,11 +61,13 @@ const CurrentUser = () => {
         />
       </Popover>
 
-      {user && <AccountSettings
-        opened={isOpen}
-        setOpened={setIsOpen}
-        userId={user.id}
-      />}
+      {user && (
+        <AccountSettings
+          opened={isOpen}
+          setOpened={setIsOpen}
+          userId={user.id}
+        />
+      )}
     </>
   );
 };

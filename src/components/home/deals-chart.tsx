@@ -10,17 +10,18 @@ import { GetFieldsFromList } from '@refinedev/nestjs-query';
 import { DashboardDealsChartQuery } from '@/graphql/types';
 
 const DealsChart = () => {
-
   const { data } = useList<GetFieldsFromList<DashboardDealsChartQuery>>({
     resource: 'dealStages',
     filters: [
       {
-        field: 'title', operator: 'in', value: ['WON', 'LOST']
-      }
+        field: 'title',
+        operator: 'in',
+        value: ['WON', 'LOST'],
+      },
     ],
     meta: {
-      gqlQuery: DASHBOARD_DEALS_CHART_QUERY
-    }
+      gqlQuery: DASHBOARD_DEALS_CHART_QUERY,
+    },
   });
 
   const dealData = useMemo(() => {
@@ -43,18 +44,18 @@ const DealsChart = () => {
       tickCount: 4,
       label: {
         formatter: (v: string) => {
-          return `$${Number(v) / 1000}k`
-        }
-      }
+          return `$${Number(v) / 1000}k`;
+        },
+      },
     },
     tooltip: {
       formatter: (data) => {
         return {
           name: data.state,
-          value: `$${Number(data.value) / 1000}k`
-      }
-      }
-    }
+          value: `$${Number(data.value) / 1000}k`,
+        };
+      },
+    },
   };
 
   return (
@@ -71,8 +72,9 @@ const DealsChart = () => {
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '8px'
-          }}>
+            gap: '8px',
+          }}
+        >
           <DollarOutlined />
           <Text size='sm' style={{ marginLeft: '0.5rem' }}>
             Deals

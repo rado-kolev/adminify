@@ -1,19 +1,20 @@
 import { totalCountVariants } from '@/constants';
-import { Card, Skeleton } from 'antd'
+import { Card, Skeleton } from 'antd';
 import { Text } from '../text';
 import { Area, AreaConfig } from '@ant-design/plots';
 
 type Props = {
-  resource: 'companies' | 'contacts' | 'deals',
-  isLoading: boolean,
-  totalCount?: number
-}
+  resource: 'companies' | 'contacts' | 'deals';
+  isLoading: boolean;
+  totalCount?: number;
+};
 const DashboardTotalCountCard = ({
   resource,
   isLoading,
-  totalCount
+  totalCount,
 }: Props) => {
-  const { primaryColor, secondaryColor, icon, title } = totalCountVariants[resource];
+  const { primaryColor, secondaryColor, icon, title } =
+    totalCountVariants[resource];
 
   const config: AreaConfig = {
     data: totalCountVariants[resource].data,
@@ -31,15 +32,15 @@ const DashboardTotalCountCard = ({
       label: {
         style: {
           stroke: 'transparent',
-        }
+        },
       },
       grid: {
         line: {
           style: {
             stroke: 'transparent',
-          }
-        }
-      }
+          },
+        },
+      },
     },
     smooth: true,
     line: {
@@ -47,10 +48,10 @@ const DashboardTotalCountCard = ({
     },
     areaStyle: () => {
       return {
-        fill: `l(270) 0:#fff 0.2${secondaryColor} 1:${primaryColor}`
-      }
-    }
-  }
+        fill: `l(270) 0:#fff 0.2${secondaryColor} 1:${primaryColor}`,
+      };
+    },
+  };
 
   return (
     <Card
@@ -58,9 +59,16 @@ const DashboardTotalCountCard = ({
       styles={{ body: { padding: '8px 8px 8px 12px' } }}
       size='small'
     >
-      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', whiteSpace: 'nowrap' }}>
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '8px',
+          whiteSpace: 'nowrap',
+        }}
+      >
         {icon}
-        <Text size='md' className='secondary' style={{marginLeft: '8px'}}>
+        <Text size='md' className='secondary' style={{ marginLeft: '8px' }}>
           {title}
         </Text>
       </div>
@@ -74,24 +82,24 @@ const DashboardTotalCountCard = ({
             flexShrink: 0,
             textAlign: 'start',
             marginLeft: '48px',
-            fontVariantNumeric: 'tabular-nums'
+            fontVariantNumeric: 'tabular-nums',
           }}
         >
           {isLoading ? (
             <Skeleton.Button
               style={{
                 width: '74px',
-                marginTop: '8px'
+                marginTop: '8px',
               }}
             />
           ) : (
             totalCount
           )}
         </Text>
-        <Area {...config} style={{width: '50%'}} />
+        <Area {...config} style={{ width: '50%' }} />
       </div>
     </Card>
-  )
-}
+  );
+};
 
-export default DashboardTotalCountCard
+export default DashboardTotalCountCard;

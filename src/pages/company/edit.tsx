@@ -1,6 +1,10 @@
 import CustomAvatar from '@/components/custom-avatar';
 import SelectOptionWithAvatar from '@/components/select-option-with-avatar';
-import { businessTypeOptions, companySizeOptions, industryOptions } from '@/constants';
+import {
+  businessTypeOptions,
+  companySizeOptions,
+  industryOptions,
+} from '@/constants';
 import { UPDATE_COMPANY_MUTATION } from '@/graphql/mutations';
 import { USERS_SELECT_QUERY } from '@/graphql/queries';
 import { UsersSelectQuery } from '@/graphql/types';

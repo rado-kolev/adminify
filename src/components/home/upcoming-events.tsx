@@ -8,7 +8,6 @@ import { DASHBOARD_CALENDAR_UPCOMING_EVENTS_QUERY } from '@/graphql/queries';
 import dayjs from 'dayjs';
 
 const UpcomingEvents = () => {
-  
   const { data, isLoading } = useList({
     resource: 'events',
     pagination: { pageSize: 5 },
@@ -16,14 +15,14 @@ const UpcomingEvents = () => {
       {
         field: 'startDate',
         order: 'asc',
-      }
+      },
     ],
     filters: [
       {
         field: 'startDate',
         operator: 'gte',
         value: dayjs().format('YYYY-MM-DD'),
-      }
+      },
     ],
     meta: {
       gqlQuery: DASHBOARD_CALENDAR_UPCOMING_EVENTS_QUERY,
@@ -78,7 +77,7 @@ const UpcomingEvents = () => {
               </List.Item>
             );
           }}
-          />
+        />
       )}
       {!isLoading && data?.data?.length === 0 && (
         <span
